@@ -4,7 +4,7 @@ import axiosInstance from "../utils/axiosInstance";
 import Navbar from "../components/Navbar/Navbar";
 
 const Login = () => {
-  const [error, setError] = useState(null);
+  const [error, setError] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
@@ -33,21 +33,24 @@ const Login = () => {
       });
 
       if (response.data && response.data.error) {
-        setError(response.data.message);
-        console.log("Errrror");
+        setError(response.data.message || 'An error occurred');
+        console.log("Error:", response.data.message);
         return;
       }
+      
 
       if (response.data && response.data.success && response.data.accessToken) {
         localStorage.setItem("token", response.data.accessToken);
-        navigate("/dashboard");
+        navigate("/dashboard"); 
       }
     } catch (error) {
       if (error.response && error.response.message) {
         setError(error.response.message);
       }
     }
+  console.log(error)
   };
+
 
   return (
     <div>
