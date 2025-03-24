@@ -1,0 +1,39 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: "Roboto", sans-serif;
+}
+
+@layer components {
+  .gradient {
+    /* @apply bg-gradient-to-r from-blue-600 to-blue-500; */
+    @apply bg-gradient-to-r from-blue-600 from-50% via-blue-500 from-20% to-blue-400;
+  }
+
+  .text-gradient {
+    @apply text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-400 w-fit mx-auto;
+  }
+
+  .input-container {
+    @apply flex flex-col;
+  }
+
+  .input-label {
+    @apply text-sm mb-2;
+  }
+
+  .input {
+    @apply outline-none border pl-3 py-2 rounded text-sm focus:border-primary;
+  }
+
+  button {
+    @apply outline-none;
+  }
+  a {
+    outline: none;
+  }
+}
